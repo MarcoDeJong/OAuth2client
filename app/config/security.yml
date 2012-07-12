@@ -29,6 +29,15 @@ security:
             logout:
                 path:   /demo/secured/logout
                 target: /demo/
+            oauth:
+                resource_owners:
+                    facebook: "/login/check-facebook"
+                    my_custom: "/login/check-custom"
+                login_path:  /login
+                failure_path: /login
+
+                oauth_user_provider:
+                    service: hwi_oauth.user.provider
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"
@@ -36,3 +45,6 @@ security:
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+
+    factories:
+        - "%kernel.root_dir%/../vendor/bundles/HWI/Bundle/OAuthBundle/Resources/config/security_factory.xml"
