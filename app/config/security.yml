@@ -17,27 +17,39 @@ security:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        login:
-            pattern:  ^/demo/secured/login$
-            security: false
+        #login:
+        #    pattern:  ^/demo/secured/login$
+        #    security: false
 
         secured_area:
-            pattern:    ^/demo/secured/
-            form_login:
-                check_path: /demo/secured/login_check
-                login_path: /demo/secured/login
-            logout:
-                path:   /demo/secured/logout
-                target: /demo/
+            pattern:   ^/
+            anonymous: true
+            logout:    true
             oauth:
                 resource_owners:
-                    facebook: "/login/check-facebook"
-                    my_custom: "/login/check-custom"
-                login_path:  /login
+                        facebook: /login/check-facebook
+                login_path: /demo/secured/login
                 failure_path: /login
+                
+                oauth_user_provider: 
+                    oauth: ~
 
-                oauth_user_provider:
-                    service: hwi_oauth.user.provider
+            #pattern:    ^/demo/secured/
+            #form_login:
+              #  check_path: /demo/secured/login_check
+                #login_path: /demo/secured/login
+            #logout:
+            #    path:   /demo/secured/logout
+            #    target: /demo/
+            #oauth:
+            #    resource_owners:
+            #        facebook: "/login/check-facebook"
+            #    login_path:  /demo/secured/login
+            #    failure_path: /login
+#
+#                oauth_user_provider:
+#                    oauth: ~
+                    #oauth: hwi_oauth.user.provider
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"

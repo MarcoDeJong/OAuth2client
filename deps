@@ -65,3 +65,10 @@
 [HWIOAuthBundle]
     git=git://github.com/hwi/HWIOAuthBundle.git
     target=/bundles/HWI/Bundle/OAuthBundle
+
+[buzz]
+    git=http://github.com/kriswallsmith/Buzz.git
+
+[SensioBuzzBundle]
+    git=http://github.com/sensio/SensioBuzzBundle.git
+    target=bundles/Sensio/Bundle/BuzzBundle

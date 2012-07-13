@@ -60,22 +60,11 @@ jms_security_extra:
     secure_all_services: false
 
 hwi_oauth:
-    firewall_name: secured_area
     resource_owners:
-        any_name:
+        facebook:
             type: facebook
-            client_id: 123
-            client_secret: 456
+            client_id: %facebook_clientid%
+            client_secret: %facebook_secret%
             scope: ""
-        my_custom:
-            type: oauth2
-            client_id: 123
-            client_secret: 456
-            access_token_url: https://url/oauth/xx
-            authorization_url: https://url/oauth/xx
-            infos_url: https://url/oauth/xx
-            scope: ""
-            user_response_class: HWI\Bundle\OAuthBundle\OAuth\Response\PathUserResponse
-            paths:
-                username: id
-                displayname: username
+    firewall_name: secured_area
+    connect: ~
